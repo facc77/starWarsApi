@@ -1,74 +1,67 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# Star Wars App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  Este proyecto consume la siguiente API [SWAPI STAR WARS](https://swapi.dev/).
 
-## Available Scripts
+## Idea
 
-In the project directory, you can run:
+  La idea del proyecto es renderizar una lista de personajes de la famosa saga siguiendo un modelo de Figma particular, tanto para esa lista como para la sección de detalle. El proyecto está diseñado para visualizarse en mobile Los modelos finalizados son los siguientes: 
+  
+  
+  ![starwars1](https://user-images.githubusercontent.com/62775484/164109437-abdc5dd3-9d20-4c20-9a34-4ec246186505.png)
+  ![starwars2](https://user-images.githubusercontent.com/62775484/164110138-763110fd-1749-4ba0-b581-3d4dc7dc7d0d.png)
+  ![starwars3](https://user-images.githubusercontent.com/62775484/164110325-53821e00-b632-4ac6-aa87-ff271e5afa35.png)
+  ![starwars4](https://user-images.githubusercontent.com/62775484/164110293-9f8a0402-2d28-43d2-91ee-fc25c37dad86.png)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `Recursos utilizados`
 
-### `npm test`
+  Para llevar a cabo la consigna, utilicé las siguientes herramientas:\
+  \
+    [Dotenv](https://www.npmjs.com/package/dotenv) : para guardar variables de entorno, url base y endpoints en este caso.\
+    [Material-ui](https://mui.com/) : para estilizar las vistas.\
+    [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) : para manejar rutas y redireccionado.\
+    [Redux-toolkit](https://redux-toolkit.js.org/) : para manejar estados de la aplicación.
+    
+    
+### `Redux`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Elegí usar Redux-toolkit porque provee una fuente única de verdad, donde almacenar todos los datos requeridos, incluyendo estados de carga, errores, estados completos de la app en un determinado momento. 
+   A diferencia del State de React que se encuentra en componentes particulares, podemos tener al alcance, toda la info de manera global, en cualquier componente que lo requiera. De esta manera, evitamos tener que pasar toda la información de componentes padres a hijos por medio de props.
+   
+### `AppRouter`
 
-### `npm run build`
+En AppRouter se ubican los dispatch de los reducers en un useEffect. A su vez se especifica una ruta pública, en que se ubican las rutas del proyecto y se da lugar a una ruta privada, pensando en rutas futuras con validaciones para una posible sección de backoffice.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Peticiones`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Un fetch realizado a cualquiera de los endpoints como `/people` devuelve una lista paginada de una porción de la lista total, que a su vez contiene una propiedad `next` con la url de la siguiente página. El proyecto requería descargar la lista de personajes de la saga en páginas, por lo que utilizo una función reutilizable getPage para ello.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Sin embargo, algunos personajes requerían un planeta o un vehículo cuyo index se encontraba en páginas posteriores, por lo que decidí traer el listado completo de planetas, vehículos y razas con la función reutilizable getCompleteList de la carpeta `/services`.
 
-### `npm run eject`
+Dependiendo del valor firstLoad de PeopleReducer, Home determina si mostrar sólo el header y el spinner o si mostrar la lista ya renderizada con el spinner debajo de la misma. También se utiliza los valores de loading y error de cada uno de los reducer para mostrar posibles mensajes de error.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `Detalle de Personaje`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Al seleccionar un usuario de la lista, podemos observar el detalle del sujeto seleccionado, este mismo figura como activo en el reducer correspondiente, pero debido a que una posible recarga de la página pueda perder esa información en el reducer, opté por setear esos detalles en LocalStorage ya que con ese recurso, los datos guardados persisten inclusive cuando cerramos el navegador.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `A futuro`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Mi idea para hacer el proyecto más escalable es aprender y aplicar Nextjs para renderizar la app desde el lado del servidor. Cualquier consejo/recomendación/feedback es más que bienvenido!!
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## `Nota`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Al correr la app te puedes encontrar con que una misma página se renderice dos veces. Luego de investigar un poco, encontré que el modo estricto de React, dispara a propósito dos veces tus reducers con el objetivo de hacer más aparentes cualquier efecto secundario. Remover el modo estricto de la app, resuelve esto. 
 
-### Code Splitting
+https://github.com/facebook/react/issues/16295#issuecomment-610098654 \
+https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# starWarsApi
->>>>>>> 140a33d116ae1beb8b20565eeb00c84b3e6d5952
