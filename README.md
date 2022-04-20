@@ -21,7 +21,7 @@
     [Dotenv](https://www.npmjs.com/package/dotenv) : para guardar variables de entorno, url base y endpoints en este caso.\
     [Material-ui](https://mui.com/) : para estilizar las vistas.\
     [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) : para manejar rutas y redireccionado.\
-    [Redux-toolkit](https://redux-toolkit.js.org/) : para manejar estados de la aplicación.
+    [Redux-toolkit](https://redux-toolkit.js.org/) : para manejar estados de la aplicación.\
     [Intersection-observer](https://developer.mozilla.org/es/docs/Web/API/Intersection_Observer_API) : para manejar el scroll infinito
     
     
