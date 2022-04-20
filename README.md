@@ -53,7 +53,7 @@ Al seleccionar un usuario de la lista, podemos observar el detalle del sujeto se
 
 ### `A futuro`
 
-Mi idea para hacer el proyecto más escalable es aprender y aplicar Nextjs para renderizar la app desde el lado del servidor. Cualquier consejo/recomendación/feedback es más que bienvenido!!
+Mi idea para hacer el proyecto más escalable es aprender y aplicar Nextjs para renderizar la app desde el lado del servidor más rápidamente. Cualquier consejo/recomendación/feedback es más que bienvenido!!
 
 
 ## `Nota`
