@@ -25,6 +25,11 @@
     [Intersection-observer](https://developer.mozilla.org/es/docs/Web/API/Intersection_Observer_API) : para manejar el scroll infinito
     
     
+### `Intersection Observer API`
+
+  Investigando diferentes variantes de trabajo de paginación elegí aplicar un scroll infinito debido a que provee una experiencia más fluida de usuario. 
+  Esta API me permitió observar un elemento vacío al final del listado renderizado para triggerear la carga de la siguiente página en caso de que exista alguna pendiente.
+    
 ### `Redux`
 
   Elegí usar Redux-toolkit porque provee una fuente única de verdad, donde almacenar todos los datos requeridos, incluyendo estados de carga, errores, estados completos de la app en un determinado momento. 
